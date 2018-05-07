@@ -1,0 +1,306 @@
+=> Section 1 - Hit The Ground Running
+	-> Installing R and R studio (MAC & Windows)
+		-> Download and Install R 
+			https://cran.r-project.org/
+		-> Download and Install R Studio
+			https://www.rstudio.com/products/rstudio/download/#download
+
+	-> Dataset
+		https://www.superdatascience.com/rcourse/
+
+	-> Podcast with Data Scientist
+		https://www.superdatascience.com/3
+
+=> Section 2 - Core Programming Principles
+	-> Assignment Operator
+		= or <-
+
+	-> Variable Types
+		2L 				Integer
+		2, 2.5 			Double
+		2 + 3i 			Complex
+		"Hello" 		Character 
+		TRUE, FALSE 	Logical/Boolean ( T or F)
+
+	-> Arithmetic Operators
+		+ 				Addition
+		- 				Subtraction
+		/				Division
+		*				Multiplication
+		** 				Exponentiation
+
+	-> Comparision Operators
+		< 				Less than
+		<= 				Less than or equal to
+		> 				Greater than
+		>= 				Greater than or equal to
+		== 				Equal to
+		!= 				Not Equal to
+
+	-> Logical Operators
+		& 				AND
+		|  				OR
+		! 				NOT
+
+	-> Common Functions
+		typeof() 		Check type of variable
+		paste() 		String Concatenation
+		isTRUE() 		Check if true
+
+	-> Loops
+		i = 1
+		while(i<=5){
+			print(i)
+			i = i + 1
+		}
+
+		for(i in 1:5){
+			print(i)
+		}
+
+	-> Conditionals
+		i = 0
+		if(i>0){
+		  print("Positive")
+		} else if(i==0){
+		  print("Neither Positive Nor Negative")
+		} else {
+		  print("Negative")
+		}
+
+	-> Random Values
+		rnorm()
+
+	-> Law of large numbers
+		In probability theory, the law of large numbers (LLN) is a theorem that describes the result of performing the same experiment a large number of times. According to the law, the average of the results obtained from a large number of trials should be close to the expected value, and will tend to become closer as more trials are performed. E.g coin toss
+
+=> Section 3 - Fundamentals of R
+	-> Vectors
+		-> A vector is a sequence of data elements of the same basic type. Members in a vector are officially called components.
+		-> Examples
+			c(2, 3, 5) 
+			c(TRUE, FALSE)
+			c("a", "bb", "ccc")
+		-> Length of vectors
+			length(c(2, 3, 5))
+		-> In R, everything is stored as vector
+
+	-> Operations on Vector
+		+ - / * ** 
+		< <= > >= == !=
+		& | !
+
+	-> Vectorized Operations are much faster in R than De-vectorized Operations
+
+	-> Functions
+		c()
+		is.numeric()
+		is.integer()
+		is.double()
+		is.character()
+		seq()
+		rep()
+
+	-> Packages
+		-> Packages are collections of R functions, data,and compiled code in a well defined format. The directory where packages are stored is called library.
+		-> install.packages("ggplot2")
+		->	library(ggplot2)
+
+=> Section 4 - Matrices
+
+	-> Matrix contains data elements of same type
+	-> Functions
+		c()
+		rbind()
+		cbind()
+		matrix()
+		names()
+		rownames()
+		colnames()
+		matplot()
+		legend()
+		round()
+
+	-> Examples
+		v1 = c(1,2,3)
+		v2 = c(4,5,6)
+
+		# Row Bind - rbind()
+		matrix1 = rbind(v1,v2)
+
+		# Column Bind - cbind()
+		matrix2 = cbind(v1,v2)
+
+		# Matrix - matrix() default filled by columns
+		matrix3 = matrix(data = 1:6, nrow = 2, ncol = 3)
+		matrix4 = matrix(data = 1:6, nrow = 2, ncol = 3, byrow = TRUE)
+
+		matrix5 = matrix(data = 1:6, nrow = 3, ncol = 2)
+
+	-> Named Vectors
+		# Named Vectors
+		v3 = 1:5
+		names(v3) = c("a", "b", "c", "d","e")
+		names(v3)
+
+		# Clear names from named vectors
+		names(v3) = NULL
+
+	-> Naming Dimensions in Matrix
+		# Named Dimesnsions in Matrix
+		matrix6 = matrix(1:9, 3, 3)
+		rownames(matrix6) = c("a", "b", "c")
+		colnames(matrix6) = c("x", "y", "z")
+
+		matrix6
+		matrix6["b", "y"]
+
+		# Clear Named Dimensions
+		rownames(matrix6) = NULL
+		colnames(matrix6) = NULL
+
+		matrix6
+
+	-> Matrix Operations
+		+ - / * ** < <= > >= == != & | !
+
+		# Matrix Operations + - / * ** < <= > >= == != & | !
+		matrix6 = matrix(1:9, 3, 3)
+		matrix6 + matrix6
+		matrix6 - matrix6
+		matrix6 * matrix6
+		matrix6 / matrix6
+		matrix6 ** matrix6
+		matrix6 == matrix6
+		matrix6 * 3
+
+	-> Subsetting
+		-> Subset of vector is a vector
+		-> However subset of matrix is matrix if 2D else vector for 1D
+		-> While visualising subsets make sure to use drop to prevent any unexpected behavior
+
+		x = c(1, 2, 3, 4, 5, 6)
+		x
+		x[1]
+		x[c(1,4)]
+		x[1:4]
+		FieldGoals
+		FieldGoals[1:2,1:2]
+		FieldGoals[1,2] 			... returns vector
+		FieldGoals[1, 2, drop=F] 	... return matrix
+
+	-> Function
+		myFunction = function(a, b){
+			return(a + b)
+		}
+
+
+=> Section 5 - Data Frames
+	-> Functions
+		read.csv()
+		file.choose()
+		getwd()
+		setwd()
+		rm()
+		nrow()
+		ncol()
+		head()
+		tail()
+		str() 				 structure of data frame
+		summary()
+		levels()
+		is.data.frame()
+		qplot()
+		data.frame()
+		merge()
+
+	-> Accessing Data Frame is similar to Matrix
+		dataset[1:2,]
+
+	-> using $ to access columns
+		dataset$columnName
+
+	-> Careful while subsetting dataframe, use drop=F to ensure subsetting always result in dataframe
+
+	-> Operations 
+		-> Subsetting
+		-> Multiply columns
+		-> Add column
+			dataset$MyCalc = dataset$Birth.rate * dataset$Internet.users
+
+			dataset$dummy = 1:5
+		-> Remove a column
+			dataset$MyCalc = NULL
+			dataset$dummy = NULL
+
+	-> Levels
+		levels(dataset$Income.Group)	
+
+	-> Filtering Data Frames
+		filter = dataset$Internet.users <2
+		dataset[filter,]
+
+		dataset[dataset$Income.Group == "High income",]
+
+
+	-> qplot
+		install.packages("ggplot2")
+		library(ggplot2)
+
+	-> Visualising with qplot - colour, size, shape,  transparency - alpha, title - main
+		qplot(data = dataset, x = dataset$Internet.users, y = dataset$Birth.rate)
+		qplot(data = merged, x = Internet.users, y = Birth.rate, colour = Region, size = I(5), shape = I(17), alpha = I(0.6), main = "Birth Rate vs Internet Users")
+
+	-> Creating Data Frames
+		Countries_2012_Dataset <- c("Aruba","Afghanistan","Angola","Albania","United Arab Emirates","Argentina","Armenia")
+		Codes_2012_Dataset <- c("ABW","AFG","AGO","ALB","ARE","ARG","ARM")
+		Regions_2012_Dataset <- c("The Americas","Asia","Africa","Europe","Middle East","The Americas","Asia")
+
+		myDf = data.frame(Country = Countries_2012_Dataset, Code = Codes_2012_Dataset, Region = Regions_2012_Dataset)
+		head(myDf)
+		summary(myDf)
+
+	-> Merge Data Frames
+		head(dataset)
+		head(myDf)
+
+		merged = merge(dataset, myDf, by.x = "Country.Code", by.y = "Code")
+		merged$Country = NULL
+
+
+=> Section 6 - Advanced Visualization with ggplot2
+	-> Functions
+	-> 
+
+=> Section 7 - Homework Solutions
+
+=> References
+	-> Assignment Operators in R ( <- and = )
+		https://stackoverflow.com/questions/1741820/assignment-operators-in-r-and
+	-> Lygometry
+	-> Operators
+		+ - * / ** ^ %% %/%
+
+	-> Commonly Used Functions
+		c(), seq(), rep(), range(), order(), sort(), unique()
+
+		is.integer(), is.double(), is.numeric(), is.logical(), is.complex(), is.character(), is.vector(), is.matrix(), is.data.frame(), is.object(), is.null(), is.nan(), is.infinite(), is.finite()
+
+		toupper(), tolower(), paste()
+
+		length()
+
+		ls(), getwd(), setwd(), list.files(), file.info(), Sys.Date(), Sys.time()
+
+		pi, letters, LETTERS, month.name, month.abb
+
+		sin(),cos(), tan(), asin(), acos(), atan(), atan2(), sinh(), cosh(), tanh(), asinh(), acosh(), atanh(), log(), logb(), log10(), log2(), exp(), sqrt(), eigen(), deriv(), integrate()
+
+	-> Shapes in R
+		http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r
+
+
+		 
+			
+
+
